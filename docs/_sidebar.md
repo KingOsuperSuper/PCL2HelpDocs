@@ -2,9 +2,9 @@
 - [简介](README.md)
 - **API 服务**
 - - [引入](api_system.md)
-- [Galgame 人设 API](oops.md)
-- [Bing 每日一图 API](oops.md)
-- [优秀开源项目 CDN](oops.md)
+  - [Galgame 人设 API](oops.md)
+  - [Bing 每日一图 API](oops.md)
+  - [优秀开源项目 CDN](oops.md)
 - **站点功能**
 - - 评论系统
   - [使用 Gitalk 评论](comment.md)
