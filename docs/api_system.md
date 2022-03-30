@@ -42,7 +42,7 @@ fetch("//api.gcxstudio.cn/gcxbot_gal/index.php?type=json&name=Gong_cx");
 
 如需查看当前可用的 API 服务请查看侧边栏或 [Gong_cx's API System](https://api.gcxstudio.cn) 官网以获取更多关于 API 服务内容的消息。
 
-> Sidebar -> API 服务 分类 -> 您所需的内容
+> Sidebar -> API 服务 -> 您所需的内容
 
 ---
 
