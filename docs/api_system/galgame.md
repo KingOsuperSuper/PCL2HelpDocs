@@ -18,7 +18,7 @@
 
 ## 调用
 
-您可以使用任何支持解析 JSON 字符组和发起 HTTP 请求的编程语言调用本服务。
+您可以使用任何支持解析 JSON 字符组与发起 HTTP GET 请求的编程语言调用本服务。
 
 本 API 服务的请求地址为：[https://api.gcxstudio.cn/gcxbot_gal/index.php](https://api.gcxstudio.cn/gcxbot_gal/index.php)
 
