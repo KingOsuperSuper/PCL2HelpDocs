@@ -1,5 +1,7 @@
 # Galgame 人设 API
 
+!> 紧急提示：Galgame 人设 API 路径已调整，请更新路径以继续运行你的服务！
+
 ## 简介
 
 趣味的 Galgame 人设随机生成服务，提供 210 条重复的随机内容。
@@ -8,6 +10,7 @@
 
 ---
 
+- 使用腾讯云 CDN 加速
 - 提供多达 210 条随机人设文案
 - 可返回 JSON 或 纯文本内容以方便调用
 - 中国境内全地可用，且可用性 90 % +（[可用性记录](https://status.gcxstudio.cn)）
@@ -18,9 +21,9 @@
 
 ## 调用
 
-您可以使用任何支持解析 JSON 字符组与发起 HTTP GET 请求的编程语言调用本服务。
+您可以使用任何支持解析 JSON 字符组和发起 HTTP 请求的编程语言调用本服务。
 
-本 API 服务的请求地址为：[https://api.gcxstudio.cn/gcxbot_gal/index.php](https://api.gcxstudio.cn/gcxbot_gal/index.php)
+本 API 服务的请求地址为：[https://api.gcxstudio.cn/galgame.php](https://api.gcxstudio.cn/galgame.php)
 
 ### 可使用参数
 
@@ -37,7 +40,7 @@
 ```php
 try {
     ini_set('default_socket_timeout', 1);
-    $motd = file_get_contents("https://api.gcxstudio.cn/gcxbot_gal/index.php?name=xxx&type=json_text");
+    $motd = file_get_contents("https://api.gcxstudio.cn/galgame.php?name=xxx&type=json_text");
 }
 ```
 
