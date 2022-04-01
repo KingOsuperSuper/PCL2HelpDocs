@@ -3,11 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Gong_cx's Wiki</title>
-    <style>
-        :root {
-            --theme-color: #FEB692;
-        }
-    </style>
     <link
       rel="icon"
       href="https://api.gcxstudio.cn/favicon.ico"
@@ -20,10 +15,6 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     />
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css"
-    />
   </head>
   <body>
     <div id="app"></div>
@@ -33,7 +24,7 @@
       window.$docsify = {
         name: "Gong_cx's Wiki",
         nameLink: "/",
-        repo: "Gongcxgithub/gong_cx_wiki",
+        repo: "Gongcxgithub/wiki_commit",
         loadSidebar: true,
         maxLevel: 2,
         subMaxLevel: 4,
@@ -77,14 +68,23 @@
 							`);
               $($("#main > h1")[0]).remove();
               $("#edit-history").remove();
+              $("#other").remove();
               $("#main").after(`
 								<div class="markdown-section" id="edit-history">
 									<h2>编辑记录 <span id="latest-edit-time"></span></h2>
 									<div id="edit-history-list">
 										Loading...
 									</div>
-                  <a href="https://github.com/Gongcxgithub/wiki_commit/commits/main" _target="_blank" id="edit-history-link">在 Github 查看 Commit 记录</a>
+									<a href="https://github.com/Gongcxgithub/wiki_commit/commits/main/${getCurrentFilePath()}" _target="_blank" id="edit-history-link">在 Github 编辑此页面</a>
 								</div>
+							`);
+              $("#edit-history").after(`
+								<div class="markdown-section" id="other">
+									<h2>其他</h2>
+                  <blockquote>
+                 <span id="copyright">Copyright by Gong_cx.</span> | <a href="https://docsify.js.org" target="_blank">Powered by docsify</a>.<br><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021005460号-1</a> | <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010302000349" target="_blank">赣公网安备 36010302000349号</a>
+								</blockquote>
+                </div>
 							`);
               loadFileCommitHistory();
             });
@@ -234,10 +234,10 @@
       }
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-	<script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
     <style>
       #main {
         background: #fff;
@@ -246,6 +246,15 @@
         margin-top: calc(-45vh + 250px);
         max-width: 1100px;
         margin-bottom: 50px;
+      }
+      #other a {
+        color: var(--theme-color) !important;
+        text-decoration: none !important;
+        position: relative;
+      }
+      #copyright {
+        color: var(--theme-color) !important;
+        position: relative;
       }
       .header {
         height: 60vh;
@@ -278,7 +287,7 @@
         white-space: nowrap;
       }
       #background {
-        background: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+        background: linear-gradient(135deg, #feb692 10%, #ea5455 100%);
         position: fixed;
         left: 0;
         right: 0;
@@ -295,7 +304,7 @@
         transition: all 0.2s ease;
         border-radius: 0 6px 6px 0;
         background: #fff;
-        color: #FEB692;
+        color: #feb692;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
       }
       p.tip,
@@ -319,7 +328,7 @@
         left: 0;
         width: 100%;
         height: 1px;
-        background-color: #FEB692;
+        background-color: #feb692;
         transition: all 0.2s;
         transform: scaleX(0);
         backface-visibility: hidden;
@@ -349,7 +358,7 @@
         content: "";
         display: block;
         position: absolute;
-        background: #FEB692;
+        background: #feb692;
         opacity: 0.25;
         pointer-events: none;
         border-radius: 15px;
@@ -398,8 +407,8 @@
         left: unset;
         right: -2px;
       }
-      #edit-history:after {
-        content: "Copyright by Gong_cx | 赣ICP备2021005460号-1";
+      #other:after {
+        content: "- EOF -";
         position: absolute;
         bottom: -40px;
         left: 0;
@@ -409,7 +418,6 @@
         font-size: 18px;
         font-weight: 200;
         opacity: 0.5;
-        
         pointer-events: none;
       }
       input[type="search"] {
@@ -511,6 +519,14 @@
       }
 
       #edit-history {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+        margin-top: 20px;
+        max-width: 1100px;
+        margin-bottom: 50px;
+      }
+      #other {
         background: #fff;
         border-radius: 15px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
