@@ -18,19 +18,29 @@
 
 ## 已支持项目
 
-| 项目名                                                  | 项目地址                                             | 版本   | 简介                                                                 |
-| ------------------------------------------------------- | ---------------------------------------------------- | ------ | -------------------------------------------------------------------- |
-| [Material Design User Interface](https://www.mdui.org/) | [https://www.mdui.org](\https://www.mdui.org/)       | v1.0.2 | MDUI 漂亮、轻量且好用，它能让你更轻松地开发 Material Design 网页应用 |
-| [Bootstrap v5](https://getbootstrap.com)                | [https://getbootstrap.com](https://getbootstrap.com) | v5.1.3 | Build fast, responsive sites with Bootstrap                          |
+!> 为节省流量及性能开销，除必须标明版本号的项目，均只镜像最新版本以及主流版本
+
+| 项目名                                                    | 项目地址                                             | 版本    | 简介                                                                 |
+| --------------------------------------------------------- | ---------------------------------------------------- | ------- | -------------------------------------------------------------------- |
+| [Material Design User Interface](https://www.mdui.org/)   | [https://www.mdui.org](\https://www.mdui.org/)       | v1.0.2  | MDUI 漂亮、轻量且好用，它能让你更轻松地开发 Material Design 网页应用 |
+| [Bootstrap v5](https://getbootstrap.com)                  | [https://getbootstrap.com](https://getbootstrap.com) | v5.1.3  | Build fast, responsive sites with Bootstrap                          |
+| [Argon Theme](https://github.com/solstice23/argon-theme/) | https://github.com/solstice23/argon-theme/           | v1.3.5  | Argon - 一个轻盈、简洁、美观的 WordPress 主题                        |
+| [jQuery](https://jquery.com)                              | [https://jquery.com](https://jquery.com)             | v3.6.0  | Fast, small, and feature-rich JavaScript library.                    |
+| [Docsify ](https://docsify.js.org)                        | [https://docsify.js.org](https://docsify.js.org)     | v4.12.2 | A magical documentation generator.                                   |
+| [Font Awesome Free](https://fontawesome.com)              | [https://fontawesome.com](https://fontawesome.com)   | v6.1.1  | Take the hassle out of icons in your website.                        |
 
 ## 调用
 
 按照以下表进行静态资源调用
 
-| 项目名                         | 地址                                                                       | 镜像内容      |
-| ------------------------------ | -------------------------------------------------------------------------- | ------------- |
-| Material Design User Interface | [https://api.gcxstudio.cn/mdui/](https://api.gcxstudio.cn/mdui/)           | Github 发行版 |
-| Bootstrap v5                   | [https://api.gcxstudio.cn/bootstrap/](https://api.gcxstudio.cn/bootstrap/) | 官方资源包    |
+| 项目名                         | 地址                                                                               | 资源路径          | 镜像内容      |
+| ------------------------------ | ---------------------------------------------------------------------------------- | ----------------- | ------------- |
+| Material Design User Interface | [https://api.gcxstudio.cn/mdui/](https://api.gcxstudio.cn/mdui/)                   | Github 发行版路径 | Github 发行版 |
+| Bootstrap v5                   | [https://api.gcxstudio.cn/bootstrap/](https://api.gcxstudio.cn/bootstrap/)         | 官方资源包路径    | 官方资源包    |
+| Argon Theme                    | [https://api.gcxstudio.cn/argon/v%theme_version%](https://api.gcxstudio.cn/argon/) | Github 发行版路径 | Github 发行版 |
+| jQuery                         | [https://api.gcxstudio.cn/jquery/version](https://api.gcxstudio.cn/jquery/)        | jsDelivr 路径     | 官方资源包    |
+| Docsify & 官方插件             | [https://api.gcxstudio.cn/docsify ](https://api.gcxstudio.cn/docsify)              | jsDelivr 路径     | Github 发行版 |
+| Font Awesome Free              | [https://api.gcxstudio.cn/font-awesome](https://api.gcxstudio.cn/font-awesome)    | 官方资源包路径    | 官方资源包    |
 
 ## 举例
 
