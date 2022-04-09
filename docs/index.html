@@ -15,6 +15,11 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+    <link
+      rel="stylesheet"
+      href="//api.gcxstudio.cn/font-awesome/css/all.min.css"
+    />
   </head>
   <body>
     <div id="app"></div>
@@ -80,10 +85,7 @@
 							`);
               $("#edit-history").after(`
 								<div class="markdown-section" id="other">
-									<h2>其他</h2>
-                  <blockquote>
-                 <span id="copyright">Copyright by Gong_cx.</span> | <a href="https://docsify.js.org" target="_blank">Powered by docsify</a>.<br><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021005460号-1</a> | <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010302000349" target="_blank">赣公网安备 36010302000349号</a>
-								</blockquote>
+									<h2>其他</h2><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021005460号-1</a> & <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010302000349" target="_blank">赣公网安备 36010302000349号</a>
                 </div>
 							`);
               loadFileCommitHistory();
@@ -232,12 +234,15 @@
           .replace(/"/g, "&quot;")
           .replace(/'/g, "&#039;");
       }
+      if (typeof navigator.serviceWorker !== "undefined") {
+        navigator.serviceWorker.register("sw.js");
+      }
     </script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="//api.gcxstudio.cn/docsify/lib/docsify.min.js"></script>
+    <script src="//api.gcxstudio.cn/jquery/3.6.0/dist/jquery.min.js"></script>
+    <script src="//api.gcxstudio.cn/docsify/lib/plugins/search.min.js"></script>
+    <script src="//api.gcxstudio.cn/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="//api.gcxstudio.cn/docsify/pagination/dist/docsify-pagination.min.js"></script>
     <style>
       #main {
         background: #fff;
@@ -420,6 +425,17 @@
         opacity: 0.5;
         pointer-events: none;
       }
+      .sidebar-nav:after {
+        content: "Copyright by Gong_cx";
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 200;
+        opacity: 0.5;
+        pointer-events: none;
+      }
       input[type="search"] {
         box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%) !important;
         transition: all 0.2s ease !important;
@@ -532,12 +548,15 @@
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
         margin-top: 20px;
         max-width: 1100px;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
+        color: var(--theme-color) !important;
       }
       html.darkmode #edit-history {
         background: #353535;
       }
-
+      html.darkmode #other {
+        background: #353535;
+      }
       #edit-history-list {
         margin-bottom: 20px;
       }
@@ -586,7 +605,26 @@
         color: #353535;
       }
     </style>
-
+    <div class="mobile-app-icon-bar">
+      <a href="/">
+        <button class="buttonstyle">
+          <i class="fa-solid fa-house"></i>
+          <span class="spanstyle">主页</span>
+        </button></a
+      >
+      <a href="/comment" target="_blank">
+        <button class="buttonstyle">
+          <i class="fa-solid fa-comments"></i>
+          <span class="spanstyle">讨论</span>
+        </button></a
+      >
+      <a href="mailto:aries@gcxs.fun" target="_blank">
+        <button class="buttonstyle">
+          <i class="fa-solid fa-id-card"></i>
+          <span class="spanstyle">联系站长</span>
+        </button></a
+      >
+    </div>
     <script>
       $(window).scroll(function () {
         $("#background").css(

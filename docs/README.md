@@ -10,7 +10,7 @@
 
 > Sidebar --> 评论页面
 
-或打开 [https://docs.gcxstudio.cn/comment](https://docs.gcxstudio.cn/comment)
+或打开 [https://docs.gcxstudio.cn/comment](https://docs.gcxstudio.cn/comment/)
 
 ---
 
