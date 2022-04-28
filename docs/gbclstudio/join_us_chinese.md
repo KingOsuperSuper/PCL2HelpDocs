@@ -21,7 +21,7 @@ Hello！我们是一个来自中国的 NPO 组织，正在进行网络/科技类
 
 ## 我们的 Logo
 
-伴随着互联网的设计趋势，我们也紧跟脚步，邀请图标设计师，为我们制作了一款贴合微软公司 Fluent Desigin 风格的 Logo，我们也诚挚邀请您与我们携手并进，创造新的互联网趋势！
+伴随着互联网的设计趋势，我们也紧跟脚步，邀请图标设计师，为我们制作了一款贴合微软公司 Fluent Desigin 风格的 [Logo](https://testingcf.jsdelivr.net/gh/GBCLStudio/GH-Files-cdn@main/pic/IMG_20220327_165708.png)，我们也诚挚邀请您与我们携手并进，创造新的互联网趋势！
 
 ## 我们需要您！
 
