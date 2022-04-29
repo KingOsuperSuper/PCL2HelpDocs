@@ -9,7 +9,7 @@
       sizes="32x32"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Gong_cx's Wiki" />
+    <meta name="description" content="PCL2 Help Docs" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
@@ -27,9 +27,9 @@
     <script>
       "use strict";
       window.$docsify = {
-        name: "Gong_cx's Wiki",
+        name: "PCL2 Help Docs",
         nameLink: "/",
-        repo: "Gongcxgithub/wiki_commit",
+        repo: "KingOsuperSuper/PCL2HelpDocs",
         loadSidebar: true,
         maxLevel: 2,
         subMaxLevel: 4,
@@ -66,7 +66,7 @@
 									<div class="header-container">
 										<div class="title">
 											<span>${$("#main > h1")[0].innerText}<span>
-											<div class="subtitle">Gong_cx's Wiki</div>
+											<div class="subtitle">PCL2 Help Docs</div>
 										</div>
 									</div>
 								</div>
@@ -80,7 +80,7 @@
 									<div id="edit-history-list">
 										Loading...
 									</div>
-									<a href="https://github.com/Gongcxgithub/wiki_commit/commits/main/${getCurrentFilePath()}" _target="_blank" id="edit-history-link">在 Github 编辑此页面</a>
+									<a href="https://github.com/KingOsuperSuper/PCL2HelpDocs/commits/main/${getCurrentFilePath()}" _target="_blank" id="edit-history-link">在 Github 编辑此页面</a>
 								</div>
 							`);
               $("#edit-history").after(`
@@ -138,7 +138,7 @@
           return;
         }
         fetch(
-          `https://api.github.com/repos/Gongcxgithub/wiki_commit/commits?path=${getCurrentFilePath()}`
+          `https://api.github.com/repos/KingOsuperSuper/PCL2HelpDocs/commits?path=${getCurrentFilePath()}`
         )
           .then((res) => res.json())
           .then((res) => {
