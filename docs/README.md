@@ -1,16 +1,14 @@
 # 简介
 
-## 欢迎查看 Gong_cx Wiki
+因为官方的石墨文档域名过于难记..于是就有了本文档的诞生~
 
-您好，欢迎查看 Gong_cx Wiki，在本页您可以查看有关 Gong_cx 站点的所有文档
-
-!> 在使用 Gong_cx's API System 前，请**务必阅读** 本文档
+> Tips：本文档大部分内容移植于由龙腾猫跃编写的[脑溢血急救中心](https://shimo.im/docs/qKPttVvXKqPD8YDC)
 
 如需发表评论请打开： 
 
 > Sidebar --> 评论页面
 
-或打开 [https://docs.gcxstudio.cn/comment](https://docs.gcxstudio.cn/comment/)
+或打开 [https://www.pcl2helpdocs.ml/comment](https://www.pcl2helpdocs.ml/comment/)
 
 ---
 
