@@ -4,13 +4,16 @@
 
 > Tips：本文档大部分内容移植于由龙腾猫跃编写的[脑溢血急救中心](https://shimo.im/docs/qKPttVvXKqPD8YDC)
 
-如需发表评论请打开： 
+# 如何正确寻求帮助？
+如果您不经常上网与他人交流或您不善于和他人交流，但是您又想询问别人问题，请看以下几张图片。
+![](https://bakaxl.ml/assets/img/attention-2.05ac75c3.jpg)
+![](https://bakaxl.ml/assets/img/attention-3.5eab8258.jpg)
+![](https://bakaxl.ml/assets/img/attention-4.9229e52e.jpg)
 
-> Sidebar --> 评论页面
+**只要你能把话说清楚，按照大佬们说的去做，相信我，没有人会嘲笑你！**
 
-或打开 [https://www.pcl2helpdocs.ml/comment](https://www.pcl2helpdocs.ml/comment/)
 
----
+
 
 ### 技术栈
 

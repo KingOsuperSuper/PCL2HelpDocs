@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>PCL2 Help Docs</title>
-    <link
-      rel="icon"
-      href="https://cdn-pic.gcxstudio.cn/2022/04/30/BbJ6.png"
-      sizes="32x32"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="PCL2 Help Docs" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mobile.css" />
-    <link
-      rel="stylesheet"
-      href="//api.gcxstudio.cn/font-awesome/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div id="app"></div>
-    <div id="background" style="--height: 60vh"></div>
-    <script>
-      "use strict";
-      window.$docsify = {
-        name: "PCL2 Help Docs",
-        nameLink: "/",
-        repo: "KingOsuperSuper/PCL2HelpDocs",
-        loadSidebar: true,
-        maxLevel: 2,
-        subMaxLevel: 4,
-        alias: {
-          "/.*/_sidebar.md": "/_sidebar.md",
-        },
-        themeColor: "#FEB692",
-        search: {
-          placeholder: {
-            "/zh-cn/": "搜索",
-            "/": "Type to search",
-          },
-          noData: {
-            "/zh-cn/": "找不到结果",
-            "/": "No Results",
-          },
-        },
-        pagination: {
-          previousText: "上一篇",
-          nextText: "下一篇",
-          crossChapter: true,
-          crossChapterText: true,
-        },
 
-        plugins: [
-          function (hook) {
-            hook.ready(function () {
-              $(".app-name").after('<div id="darkmode-toggle"></div>');
-            });
-            hook.doneEach(function () {
-              $(".header").remove();
-              $("#main").before(`
+<head>
+  <meta charset="UTF-8" />
+  <title>PCL2 Help Docs</title>
+  <link rel="icon" href="https://cdn-pic.gcxstudio.cn/2022/04/30/BbJ6.png" sizes="32x32" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="PCL2 Help Docs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="//api.gcxstudio.cn/font-awesome/css/all.min.css" />
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="background" style="--height: 60vh"></div>
+  <script>
+    "use strict";
+    window.$docsify = {
+      name: "PCL2 Help Docs",
+      nameLink: "/",
+      repo: "KingOsuperSuper/PCL2HelpDocs",
+      loadSidebar: true,
+      maxLevel: 2,
+      subMaxLevel: 4,
+      alias: {
+        "/.*/_sidebar.md": "/_sidebar.md",
+      },
+      themeColor: "#FEB692",
+      search: {
+        placeholder: {
+          "/zh-cn/": "搜索",
+          "/": "Type to search",
+        },
+        noData: {
+          "/zh-cn/": "找不到结果",
+          "/": "No Results",
+        },
+      },
+      pagination: {
+        previousText: "上一篇",
+        nextText: "下一篇",
+        crossChapter: true,
+        crossChapterText: true,
+      },
+
+      plugins: [
+        function (hook) {
+          hook.ready(function () {
+            $(".app-name").after('<div id="darkmode-toggle"></div>');
+          });
+          hook.doneEach(function () {
+            $(".header").remove();
+            $("#main").before(`
 								<div class="header">
 									<div class="header-container">
 										<div class="title">
@@ -71,10 +63,10 @@
 									</div>
 								</div>
 							`);
-              $($("#main > h1")[0]).remove();
-              $("#edit-history").remove();
-              $("#other").remove();
-              $("#main").after(`
+            $($("#main > h1")[0]).remove();
+            $("#edit-history").remove();
+            $("#other").remove();
+            $("#main").after(`
 								<div class="markdown-section" id="edit-history">
 									<h2>编辑记录 <span id="latest-edit-time"></span></h2>
 									<div id="edit-history-list">
@@ -83,594 +75,654 @@
 									<a href="https://github.com/KingOsuperSuper/PCL2HelpDocs/commits/main/${getCurrentFilePath()}" _target="_blank" id="edit-history-link">在 Github 编辑此页面</a>
 								</div>
 							`);
-              $("#edit-history").after(`
+            $("#edit-history").after(`
 							
 							`);
-              loadFileCommitHistory();
-            });
-          },
-        ],
-      };
-      function getCurrentFilePath() {
-        let name = window.location.hash.substring(1).replace(/\?(.*?)$/, "");
-        if (name == "/") {
-          name = "/README";
-        }
-        return "docs" + name + ".md";
+            loadFileCommitHistory();
+          });
+        },
+      ],
+    };
+    function getCurrentFilePath() {
+      let name = window.location.hash.substring(1).replace(/\?(.*?)$/, "");
+      if (name == "/") {
+        name = "/README";
       }
-      function loadFileCommitHistory() {
-        const processJson = (res) => {
-          let html = "";
-          res.map((commit) => {
-            html += `
+      return "docs" + name + ".md";
+    }
+    function loadFileCommitHistory() {
+      const processJson = (res) => {
+        let html = "";
+        res.map((commit) => {
+          html += `
 							<div class="commit-item">
-								<a href="${
-                  commit.author.html_url
-                }" class="commit-avatar-container" target="_blank">
+								<a href="${commit.author.html_url
+            }" class="commit-avatar-container" target="_blank">
 									<img dragable="false" class="commit-avatar" src="${commit.author.avatar_url}" />
 								</a>
-								<a class="commit-author" href="${
-                  commit.html_url
-                }" target="_blank">${htmlSpecialChars(
+								<a class="commit-author" href="${commit.html_url
+            }" target="_blank">${htmlSpecialChars(
               commit.commit.author.name
             )}</a>
 								<span class="commit-message">${htmlSpecialChars(commit.commit.message)}</span>
 								<span class="commit-date" title="${new Date(
-                  commit.commit.author.date
-                ).toLocaleString()}">${humanTimeDiff(
+              commit.commit.author.date
+            ).toLocaleString()}">${humanTimeDiff(
               commit.commit.author.date
             )}</span>
 							</div>
 						`;
-          });
-          $("#edit-history-list").html(html);
-          $("#latest-edit-time").html(
-            "最后更新于 " + humanTimeDiff(res[0].commit.author.date)
-          );
-        };
-        if (sessionStorage.getItem(`edit-history-${getCurrentFilePath()}'}`)) {
-          processJson(
-            JSON.parse(
-              sessionStorage.getItem(`edit-history-${getCurrentFilePath()}'`)
-            )
-          );
-          return;
-        }
-        fetch(
-          `https://api.github.com/repos/KingOsuperSuper/PCL2HelpDocs/commits?path=${getCurrentFilePath()}`
-        )
-          .then((res) => res.json())
-          .then((res) => {
-            processJson(res);
-            sessionStorage.setItem(
-              `edit-history-${getCurrentFilePath()}'`,
-              JSON.stringify(res)
-            );
-          });
+        });
+        $("#edit-history-list").html(html);
+        $("#latest-edit-time").html(
+          "最后更新于 " + humanTimeDiff(res[0].commit.author.date)
+        );
+      };
+      if (sessionStorage.getItem(`edit-history-${getCurrentFilePath()}'}`)) {
+        processJson(
+          JSON.parse(
+            sessionStorage.getItem(`edit-history-${getCurrentFilePath()}'`)
+          )
+        );
+        return;
       }
-      function addPreZero(num, n) {
-        var len = num.toString().length;
-        while (len < n) {
-          num = "0" + num;
-          len++;
-        }
-        return num;
+      fetch(
+        `https://api.github.com/repos/KingOsuperSuper/PCL2HelpDocs/commits?path=${getCurrentFilePath()}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          processJson(res);
+          sessionStorage.setItem(
+            `edit-history-${getCurrentFilePath()}'`,
+            JSON.stringify(res)
+          );
+        });
+    }
+    function addPreZero(num, n) {
+      var len = num.toString().length;
+      while (len < n) {
+        num = "0" + num;
+        len++;
       }
-      function humanTimeDiff(time) {
-        let now = new Date();
-        time = new Date(time);
-        let delta = now - time;
-        if (delta < 0) {
-          delta = 0;
-        }
-        if (delta < 1000 * 60) {
-          return "刚刚";
-        }
-        if (delta < 1000 * 60 * 60) {
-          return parseInt(delta / (1000 * 60)) + " " + "分钟前";
-        }
-        if (delta < 1000 * 60 * 60 * 24) {
-          return parseInt(delta / (1000 * 60 * 60)) + " " + "小时前";
-        }
-        let yesterday = new Date(now - 1000 * 60 * 60 * 24);
-        yesterday.setHours(0);
-        yesterday.setMinutes(0);
-        yesterday.setSeconds(0);
-        yesterday.setMilliseconds(0);
-        if (time > yesterday) {
-          return (
-            "昨天" +
-            " " +
-            time.getHours() +
-            ":" +
-            addPreZero(time.getMinutes(), 2)
-          );
-        }
-        let theDayBeforeYesterday = new Date(now - 1000 * 60 * 60 * 24 * 2);
-        theDayBeforeYesterday.setHours(0);
-        theDayBeforeYesterday.setMinutes(0);
-        theDayBeforeYesterday.setSeconds(0);
-        theDayBeforeYesterday.setMilliseconds(0);
-        if (
-          time > theDayBeforeYesterday &&
-          argonConfig.language.indexOf("zh") == 0
-        ) {
-          return (
-            "前天" +
-            " " +
-            time.getHours() +
-            ":" +
-            addPreZero(time.getMinutes(), 2)
-          );
-        }
-        if (delta < 1000 * 60 * 60 * 24 * 30) {
-          return parseInt(delta / (1000 * 60 * 60 * 24)) + " " + "天前";
-        }
-        let theFirstDayOfThisYear = new Date(now);
-        theFirstDayOfThisYear.setMonth(0);
-        theFirstDayOfThisYear.setDate(1);
-        theFirstDayOfThisYear.setHours(0);
-        theFirstDayOfThisYear.setMinutes(0);
-        theFirstDayOfThisYear.setSeconds(0);
-        theFirstDayOfThisYear.setMilliseconds(0);
-        if (time > theFirstDayOfThisYear) {
-          return time.getMonth() + 1 + "-" + time.getDate();
-        }
+      return num;
+    }
+    function humanTimeDiff(time) {
+      let now = new Date();
+      time = new Date(time);
+      let delta = now - time;
+      if (delta < 0) {
+        delta = 0;
+      }
+      if (delta < 1000 * 60) {
+        return "刚刚";
+      }
+      if (delta < 1000 * 60 * 60) {
+        return parseInt(delta / (1000 * 60)) + " " + "分钟前";
+      }
+      if (delta < 1000 * 60 * 60 * 24) {
+        return parseInt(delta / (1000 * 60 * 60)) + " " + "小时前";
+      }
+      let yesterday = new Date(now - 1000 * 60 * 60 * 24);
+      yesterday.setHours(0);
+      yesterday.setMinutes(0);
+      yesterday.setSeconds(0);
+      yesterday.setMilliseconds(0);
+      if (time > yesterday) {
         return (
-          time.getFullYear() +
-          "-" +
-          (time.getMonth() + 1) +
-          "-" +
-          time.getDate()
+          "昨天" +
+          " " +
+          time.getHours() +
+          ":" +
+          addPreZero(time.getMinutes(), 2)
         );
       }
-      function htmlSpecialChars(str) {
-        return str
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
-      }
-      if (typeof navigator.serviceWorker !== "undefined") {
-        navigator.serviceWorker.register("sw.js");
-      }
-    </script>
-    <script src="//api.gcxstudio.cn/docsify/lib/docsify.min.js"></script>
-    <script src="//api.gcxstudio.cn/jquery/3.6.0/dist/jquery.min.js"></script>
-    <script src="//api.gcxstudio.cn/docsify/lib/plugins/search.min.js"></script>
-    <script src="//api.gcxstudio.cn/docsify/lib/plugins/zoom-image.min.js"></script>
-    <script src="//api.gcxstudio.cn/docsify/pagination/dist/docsify-pagination.min.js"></script>
-    <style>
-      #main {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
-        margin-top: calc(-45vh + 250px);
-        max-width: 1100px;
-        margin-bottom: 50px;
-      }
-      #other a {
-        color: var(--theme-color) !important;
-        text-decoration: none !important;
-        position: relative;
-      }
-      #copyright {
-        color: var(--theme-color) !important;
-        position: relative;
-      }
-      .header {
-        height: 60vh;
-        width: 100vw;
-        padding-left: var(--sidebar-width);
-        margin-left: calc(0px - var(--sidebar-width));
-        transition: all 0.25s ease-out;
-      }
-      body.close .header {
-        padding-left: 0;
-        margin-left: 0;
-      }
-      .title {
-        font-size: 50px;
-        font-weight: 600;
-        color: #fff;
-        padding-top: 15vh;
-      }
-      .subtitle {
-        font-size: 26px;
-        margin-top: 30px;
-        opacity: 0.6;
-        font-weight: 400;
-      }
-      .header-container {
-        max-width: 1100px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 25px;
-        white-space: nowrap;
-      }
-      #background {
-        background: linear-gradient(135deg, #feb692 10%, #ea5455 100%);
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: clamp(60vh, var(--height), 100vh);
-        z-index: -1;
-      }
-      aside.sidebar {
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
-        border: none;
-        background: #fff;
-      }
-      .sidebar-toggle .sidebar-toggle-button {
-        transition: all 0.2s ease;
-        border-radius: 0 6px 6px 0;
-        background: #fff;
-        color: #feb692;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-      }
-      p.tip,
-      blockquote {
-        border-radius: 3px !important;
-      }
-      .markdown-section p a,
-      .markdown-section ul a,
-      #edit-history a {
-        color: var(--theme-color) !important;
-        text-decoration: none !important;
-        position: relative;
-      }
-      .markdown-section p a:before,
-      .markdown-section ul a:before,
-      #edit-history a:before {
-        content: " ";
-        position: absolute;
-        top: auto;
-        bottom: 0px;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: #feb692;
-        transition: all 0.2s;
-        transform: scaleX(0);
-        backface-visibility: hidden;
-      }
-      .markdown-section p a:hover:before,
-      .markdown-section ul a:hover:before,
-      #edit-history a:hover:before {
-        transform: scaleX(1);
-      }
-      .markdown-section h1,
-      .markdown-section h2,
-      .markdown-section h3 {
-        position: relative;
-        padding: 0;
-        border: none;
-        font-weight: 600;
-        text-decoration: none !important;
-      }
-      .markdown-section h1 a,
-      .markdown-section h2 a,
-      .markdown-section h3 a {
-        text-decoration: none !important;
-      }
-      .markdown-section h1:after,
-      .markdown-section h2:after,
-      .markdown-section h3:after {
-        content: "";
-        display: block;
-        position: absolute;
-        background: #feb692;
-        opacity: 0.25;
-        pointer-events: none;
-        border-radius: 15px;
-        left: -2px;
-        bottom: 0px;
-      }
-      .markdown-section h1:after {
-        width: 45px;
-        height: 13px;
-      }
-      .markdown-section h2:after {
-        width: 40px;
-        height: 11px;
-      }
-      .markdown-section h3:after {
-        width: 30px;
-        height: 9px;
-      }
-      .markdown-section h1.text-center:after,
-      .markdown-section h1[style*="text-align: center"]:after,
-      .markdown-section h1[style*="text-align:center"]:after,
-      .markdown-section h1[class*="text-align-center"]:after,
-      .markdown-section h2.text-center:after,
-      .markdown-section h2[style*="text-align: center"]:after,
-      .markdown-section h2[style*="text-align:center"]:after,
-      .markdown-section h2[class*="text-align-center"]:after,
-      .markdown-section h3.text-center:after,
-      .markdown-section h3[style*="text-align: center"]:after,
-      .markdown-section h3[style*="text-align:center"]:after,
-      .markdown-section h3[class*="text-align-center"]:after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .markdown-section h1.text-right:after,
-      .markdown-section h1[style*="text-align: right"]:after,
-      .markdown-section h1[style*="text-align:right"]:after,
-      .markdown-section h1[class*="text-align-right"]:after,
-      .markdown-section h2.text-right:after,
-      .markdown-section h2[style*="text-align: right"]:after,
-      .markdown-section h2[style*="text-align:right"]:after,
-      .markdown-section h2[class*="text-align-right"]:after,
-      .markdown-section h3.text-right:after,
-      .markdown-section h3[style*="text-align: right"]:after,
-      .markdown-section h3[style*="text-align:right"]:after,
-      .markdown-section h3[class*="text-align-right"]:after {
-        left: unset;
-        right: -2px;
-      }
-      #other:after {
-        content: "- EOF -";
-        position: absolute;
-        bottom: -40px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 200;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-      .sidebar-nav:after {
-        content: "Copyright by KingOsuperSuper";
-        position: absolute;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 200;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-      input[type="search"] {
-        box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%) !important;
-        transition: all 0.2s ease !important;
-        margin: 20px !important;
-      }
-      .sidebar .search .input-wrap {
-        border: none;
-      }
-      input[type="search"]:focus {
-        box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%) !important;
-      }
-      .sidebar-nav ul > li > span,
-      .sidebar-nav ul > li > strong,
-      .sidebar nav ul > li > span,
-      .sidebar nav ul > li > strong {
-        border: none;
-        margin-bottom: 0;
-      }
-      .github-corner svg {
-        color: var(--theme-color);
-        fill: #fff;
-        opacity: 0.5;
-      }
-      html.darkmode #background {
-        background: #212121;
-      }
-
-      html.darkmode {
-        background: #262626 !important;
-      }
-      html.darkmode:root {
-        --base-color: #eee;
-        --strong-color: #eee;
-        --heading-h2-color: #eee;
-        --theme-color: #8a98eb;
-        --search-input-placeholder-color: rgba(255, 255, 255, 0.4);
-        --heading-color: #eee;
-        --table-row-odd-background: #323232;
-        --table-cell-border-color: #555;
-        --hr-border: 1px solid #666;
-        --code-inline-background: #464646;
-      }
-      html.darkmode #main {
-        background: #353535;
-      }
-      html.darkmode aside.sidebar {
-        background: #424242;
-      }
-      html.darkmode .sidebar .search .input-wrap {
-        background: transparent !important;
-      }
-      html.darkmode input[type="search"] {
-        background-color: #555 !important;
-        background-image: url("data:image/svg+xml,%3Csvg height='20px' width='20px' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.3)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5' vector-effect='non-scaling-stroke'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='15.8' y2='15.8' vector-effect='non-scaling-stroke'%3E%3C/line%3E%3C/svg%3E") !important;
-      }
-      html.darkmode .sidebar-toggle .sidebar-toggle-button {
-        background: #424242;
-        color: #fff;
-      }
-      html.darkmode pre {
-        background: #212121 !important;
-      }
-      html.darkmode code {
-        color: #eee !important;
-      }
-      html.darkmode .markdown-section blockquote {
-        background: #303030;
-      }
-      html.darkmode p.tip {
-        background: #303030 !important;
-      }
-      html.darkmode .github-corner svg {
-        fill: #424242;
-        color: #fff;
-      }
-      html.darkmode .docsify-pagination-container {
-        border-top: var(--pagination-border-top);
-        color: var(--pagination-color);
-        border-top-color: #555;
-      }
-      #darkmode-toggle {
-        text-align: center;
-        margin-top: 18px;
-        margin-bottom: -20px;
-        cursor: pointer;
-        opacity: 0.6;
-        transition: all 0.2s ease;
-      }
-      #darkmode-toggle:hover {
-        opacity: 1;
-      }
-      #darkmode-toggle:before {
-        content: "💡 Dark Mode: OFF";
-      }
-      html.darkmode #darkmode-toggle:before {
-        content: "🌙 Dark Mode: ON";
-      }
-
-      #edit-history {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
-        margin-top: 20px;
-        max-width: 1100px;
-        margin-bottom: 50px;
-      }
-      #other {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
-        margin-top: 20px;
-        max-width: 1100px;
-        margin-bottom: 60px;
-        color: var(--theme-color) !important;
-      }
-      html.darkmode #edit-history {
-        background: #353535;
-      }
-      html.darkmode #other {
-        background: #353535;
-      }
-      #edit-history-list {
-        margin-bottom: 20px;
-      }
-      .commit-item {
-        display: flex;
-        margin-bottom: 15px;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        align-content: center;
-      }
-      .commit-avatar-container {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-      }
-      .commit-avatar-container:before {
-        display: none;
-      }
-      .commit-avatar {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-      }
-      .commit-author {
-        margin-right: 10px;
-        font-weight: 600;
-      }
-      .commit-date {
-        font-size: 16px;
-        opacity: 0.8;
-      }
-      .commit-message {
-        flex: 1;
-      }
-      #latest-edit-time {
-        font-size: 16px;
-        opacity: 0.7;
-        font-weight: normal;
-      }
-
-      spoiler {
-        color: #fff;
-      }
-      html.darkmode spoiler {
-        color: #353535;
-      }
-    </style>
-    <div class="mobile-app-icon-bar">
-      <a href="/">
-        <button class="buttonstyle">
-          <i class="fa-solid fa-house"></i>
-          <span class="spanstyle">主页</span>
-        </button></a
-      >
-      <a href="/comment" target="_blank">
-        <button class="buttonstyle">
-          <i class="fa-solid fa-comments"></i>
-          <span class="spanstyle">讨论</span>
-        </button></a
-      >
-      <a href="mailto:aries@gcxs.fun" target="_blank">
-        <button class="buttonstyle">
-          <i class="fa-solid fa-id-card"></i>
-          <span class="spanstyle">联系站长</span>
-        </button></a
-      >
-    </div>
-    <script>
-      $(window).scroll(function () {
-        $("#background").css(
-          "--height",
-          60 + ($(window).scrollTop() / ($(window).height() * 0.25)) * 40 + "vh"
+      let theDayBeforeYesterday = new Date(now - 1000 * 60 * 60 * 24 * 2);
+      theDayBeforeYesterday.setHours(0);
+      theDayBeforeYesterday.setMinutes(0);
+      theDayBeforeYesterday.setSeconds(0);
+      theDayBeforeYesterday.setMilliseconds(0);
+      if (
+        time > theDayBeforeYesterday &&
+        argonConfig.language.indexOf("zh") == 0
+      ) {
+        return (
+          "前天" +
+          " " +
+          time.getHours() +
+          ":" +
+          addPreZero(time.getMinutes(), 2)
         );
-      });
-      function setDarkmode(enable) {
-        if (enable == true) {
-          $("html").addClass("darkmode");
-        } else {
-          $("html").removeClass("darkmode");
-        }
-        $(window).trigger("scroll");
       }
-      function toggleDarkmode() {
-        if ($("html").hasClass("darkmode")) {
-          setDarkmode(false);
-          sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
-        } else {
-          setDarkmode(true);
-          sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
-        }
+      if (delta < 1000 * 60 * 60 * 24 * 30) {
+        return parseInt(delta / (1000 * 60 * 60 * 24)) + " " + "天前";
       }
-      if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true") {
-        setDarkmode(true);
+      let theFirstDayOfThisYear = new Date(now);
+      theFirstDayOfThisYear.setMonth(0);
+      theFirstDayOfThisYear.setDate(1);
+      theFirstDayOfThisYear.setHours(0);
+      theFirstDayOfThisYear.setMinutes(0);
+      theFirstDayOfThisYear.setSeconds(0);
+      theFirstDayOfThisYear.setMilliseconds(0);
+      if (time > theFirstDayOfThisYear) {
+        return time.getMonth() + 1 + "-" + time.getDate();
       }
-      function toggleDarkmodeByPrefersColorScheme(media) {
-        if (
-          sessionStorage.getItem("Argon_Enable_Dark_Mode") == "false" ||
-          sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"
-        ) {
-          return;
-        }
-        if (media.matches) {
-          setDarkmode(true);
-        } else {
-          setDarkmode(false);
-        }
-      }
-      var darkmodeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+      return (
+        time.getFullYear() +
+        "-" +
+        (time.getMonth() + 1) +
+        "-" +
+        time.getDate()
       );
-      darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
-      toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
-      $(document).on("click", "#darkmode-toggle", function () {
-        toggleDarkmode();
-      });
-    </script>
-  </body>
+    }
+    function htmlSpecialChars(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+    if (typeof navigator.serviceWorker !== "undefined") {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+  <script src="//api.gcxstudio.cn/docsify/lib/docsify.min.js"></script>
+  <script src="//api.gcxstudio.cn/jquery/3.6.0/dist/jquery.min.js"></script>
+  <script src="//api.gcxstudio.cn/docsify/lib/plugins/search.min.js"></script>
+  <script src="//api.gcxstudio.cn/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//api.gcxstudio.cn/docsify/pagination/dist/docsify-pagination.min.js"></script>
+  <style>
+    #main {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+      margin-top: calc(-45vh + 250px);
+      max-width: 1100px;
+      margin-bottom: 50px;
+    }
+
+    html strong {
+      font-size: 22px !important;
+      line-height: 22px;
+    }
+
+    #other a {
+      color: var(--theme-color) !important;
+      text-decoration: none !important;
+      position: relative;
+    }
+
+    #copyright {
+      color: var(--theme-color) !important;
+      position: relative;
+    }
+
+    .header {
+      height: 60vh;
+      width: 100vw;
+      padding-left: var(--sidebar-width);
+      margin-left: calc(0px - var(--sidebar-width));
+      transition: all 0.25s ease-out;
+    }
+
+    body.close .header {
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    .title {
+      font-size: 50px;
+      font-weight: 600;
+      color: #fff;
+      padding-top: 15vh;
+    }
+
+    .subtitle {
+      font-size: 26px;
+      margin-top: 30px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 25px;
+      white-space: nowrap;
+    }
+
+    #background {
+      background: linear-gradient(135deg, #feb692 10%, #ea5455 100%);
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: clamp(60vh, var(--height), 100vh);
+      z-index: -1;
+    }
+
+    aside.sidebar {
+      box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+      border: none;
+      background: #fff;
+    }
+
+    .sidebar-toggle .sidebar-toggle-button {
+      transition: all 0.2s ease;
+      border-radius: 0 6px 6px 0;
+      background: #fff;
+      color: #feb692;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    }
+
+    p.tip,
+    blockquote {
+      border-radius: 3px !important;
+    }
+
+    .markdown-section p a,
+    .markdown-section ul a,
+    #edit-history a {
+      color: var(--theme-color) !important;
+      text-decoration: none !important;
+      position: relative;
+    }
+
+    .markdown-section p a:before,
+    .markdown-section ul a:before,
+    #edit-history a:before {
+      content: " ";
+      position: absolute;
+      top: auto;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #feb692;
+      transition: all 0.2s;
+      transform: scaleX(0);
+      backface-visibility: hidden;
+    }
+
+    .markdown-section p a:hover:before,
+    .markdown-section ul a:hover:before,
+    #edit-history a:hover:before {
+      transform: scaleX(1);
+    }
+
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3 {
+      position: relative;
+      padding: 0;
+      border: none;
+      font-weight: 600;
+      text-decoration: none !important;
+    }
+
+    .markdown-section h1 a,
+    .markdown-section h2 a,
+    .markdown-section h3 a {
+      text-decoration: none !important;
+    }
+
+    .markdown-section h1:after,
+    .markdown-section h2:after,
+    .markdown-section h3:after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: #feb692;
+      opacity: 0.25;
+      pointer-events: none;
+      border-radius: 15px;
+      left: -2px;
+      bottom: 0px;
+    }
+
+    .markdown-section h1:after {
+      width: 45px;
+      height: 13px;
+    }
+
+    .markdown-section h2:after {
+      width: 40px;
+      height: 11px;
+    }
+
+    .markdown-section h3:after {
+      width: 30px;
+      height: 9px;
+    }
+
+    .markdown-section h1.text-center:after,
+    .markdown-section h1[style*="text-align: center"]:after,
+    .markdown-section h1[style*="text-align:center"]:after,
+    .markdown-section h1[class*="text-align-center"]:after,
+    .markdown-section h2.text-center:after,
+    .markdown-section h2[style*="text-align: center"]:after,
+    .markdown-section h2[style*="text-align:center"]:after,
+    .markdown-section h2[class*="text-align-center"]:after,
+    .markdown-section h3.text-center:after,
+    .markdown-section h3[style*="text-align: center"]:after,
+    .markdown-section h3[style*="text-align:center"]:after,
+    .markdown-section h3[class*="text-align-center"]:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .markdown-section h1.text-right:after,
+    .markdown-section h1[style*="text-align: right"]:after,
+    .markdown-section h1[style*="text-align:right"]:after,
+    .markdown-section h1[class*="text-align-right"]:after,
+    .markdown-section h2.text-right:after,
+    .markdown-section h2[style*="text-align: right"]:after,
+    .markdown-section h2[style*="text-align:right"]:after,
+    .markdown-section h2[class*="text-align-right"]:after,
+    .markdown-section h3.text-right:after,
+    .markdown-section h3[style*="text-align: right"]:after,
+    .markdown-section h3[style*="text-align:right"]:after,
+    .markdown-section h3[class*="text-align-right"]:after {
+      left: unset;
+      right: -2px;
+    }
+
+    #other:after {
+      content: "- EOF -";
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 200;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .sidebar-nav:after {
+      content: "Copyright by KingOsuperSuper";
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 200;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    input[type="search"] {
+      box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%) !important;
+      transition: all 0.2s ease !important;
+      margin: 20px !important;
+    }
+
+    .sidebar .search .input-wrap {
+      border: none;
+    }
+
+    input[type="search"]:focus {
+      box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%) !important;
+    }
+
+    .sidebar-nav ul>li>span,
+    .sidebar-nav ul>li>strong,
+    .sidebar nav ul>li>span,
+    .sidebar nav ul>li>strong {
+      border: none;
+      margin-bottom: 0;
+    }
+
+    .github-corner svg {
+      color: var(--theme-color);
+      fill: #fff;
+      opacity: 0.5;
+    }
+
+    html.darkmode #background {
+      background: #212121;
+    }
+
+    html.darkmode {
+      background: #262626 !important;
+    }
+
+    html.darkmode:root {
+      --base-color: #eee;
+      --strong-color: #eee;
+      --heading-h2-color: #eee;
+      --theme-color: #8a98eb;
+      --search-input-placeholder-color: rgba(255, 255, 255, 0.4);
+      --heading-color: #eee;
+      --table-row-odd-background: #323232;
+      --table-cell-border-color: #555;
+      --hr-border: 1px solid #666;
+      --code-inline-background: #464646;
+    }
+
+    html.darkmode #main {
+      background: #353535;
+    }
+
+    html.darkmode aside.sidebar {
+      background: #424242;
+    }
+
+    html.darkmode .sidebar .search .input-wrap {
+      background: transparent !important;
+    }
+
+    html.darkmode input[type="search"] {
+      background-color: #555 !important;
+      background-image: url("data:image/svg+xml,%3Csvg height='20px' width='20px' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.3)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5' vector-effect='non-scaling-stroke'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='15.8' y2='15.8' vector-effect='non-scaling-stroke'%3E%3C/line%3E%3C/svg%3E") !important;
+    }
+
+    html.darkmode .sidebar-toggle .sidebar-toggle-button {
+      background: #424242;
+      color: #fff;
+    }
+
+    html.darkmode pre {
+      background: #212121 !important;
+    }
+
+    html.darkmode code {
+      color: #eee !important;
+    }
+
+    html.darkmode .markdown-section blockquote {
+      background: #303030;
+    }
+
+    html.darkmode p.tip {
+      background: #303030 !important;
+    }
+
+    html.darkmode .github-corner svg {
+      fill: #424242;
+      color: #fff;
+    }
+
+    html.darkmode .docsify-pagination-container {
+      border-top: var(--pagination-border-top);
+      color: var(--pagination-color);
+      border-top-color: #555;
+    }
+
+    #darkmode-toggle {
+      text-align: center;
+      margin-top: 18px;
+      margin-bottom: -20px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+    }
+
+    #darkmode-toggle:hover {
+      opacity: 1;
+    }
+
+    #darkmode-toggle:before {
+      content: "💡 Dark Mode: OFF";
+    }
+
+    html.darkmode #darkmode-toggle:before {
+      content: "🌙 Dark Mode: ON";
+    }
+
+    #edit-history {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+      margin-top: 20px;
+      max-width: 1100px;
+      margin-bottom: 50px;
+    }
+
+    #other {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+      margin-top: 20px;
+      max-width: 1100px;
+      margin-bottom: 60px;
+      color: var(--theme-color) !important;
+    }
+
+    html.darkmode #edit-history {
+      background: #353535;
+    }
+
+    html.darkmode #other {
+      background: #353535;
+    }
+
+    #edit-history-list {
+      margin-bottom: 20px;
+    }
+
+    .commit-item {
+      display: flex;
+      margin-bottom: 15px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      align-content: center;
+    }
+
+    .commit-avatar-container {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .commit-avatar-container:before {
+      display: none;
+    }
+
+    .commit-avatar {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .commit-author {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .commit-date {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .commit-message {
+      flex: 1;
+    }
+
+    #latest-edit-time {
+      font-size: 16px;
+      opacity: 0.7;
+      font-weight: normal;
+    }
+
+    spoiler {
+      color: #fff;
+    }
+
+    html.darkmode spoiler {
+      color: #353535;
+    }
+  </style>
+  <div class="mobile-app-icon-bar">
+    <a href="/">
+      <button class="buttonstyle">
+        <i class="fa-solid fa-house"></i>
+        <span class="spanstyle">主页</span>
+      </button></a>
+    <a href="/comment" target="_blank">
+      <button class="buttonstyle">
+        <i class="fa-solid fa-comments"></i>
+        <span class="spanstyle">讨论</span>
+      </button></a>
+    <a href="mailto:aries@gcxs.fun" target="_blank">
+      <button class="buttonstyle">
+        <i class="fa-solid fa-id-card"></i>
+        <span class="spanstyle">联系站长</span>
+      </button></a>
+  </div>
+  <script>
+    $(window).scroll(function () {
+      $("#background").css(
+        "--height",
+        60 + ($(window).scrollTop() / ($(window).height() * 0.25)) * 40 + "vh"
+      );
+    });
+    function setDarkmode(enable) {
+      if (enable == true) {
+        $("html").addClass("darkmode");
+      } else {
+        $("html").removeClass("darkmode");
+      }
+      $(window).trigger("scroll");
+    }
+    function toggleDarkmode() {
+      if ($("html").hasClass("darkmode")) {
+        setDarkmode(false);
+        sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+      } else {
+        setDarkmode(true);
+        sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+      }
+    }
+    if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true") {
+      setDarkmode(true);
+    }
+    function toggleDarkmodeByPrefersColorScheme(media) {
+      if (
+        sessionStorage.getItem("Argon_Enable_Dark_Mode") == "false" ||
+        sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"
+      ) {
+        return;
+      }
+      if (media.matches) {
+        setDarkmode(true);
+      } else {
+        setDarkmode(false);
+      }
+    }
+    var darkmodeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+    darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+    toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+    $(document).on("click", "#darkmode-toggle", function () {
+      toggleDarkmode();
+    });
+  </script>
+</body>
+
 </html>
