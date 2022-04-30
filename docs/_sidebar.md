@@ -1,6 +1,6 @@
 - **快速开始**
 - [简介](README.md)
 - **问题**
-- - [关于PCL2内群以及PCL2客户端](api_system/introduction.md)
-- **PCL2启动器**
+- - [PCL2内群以及PCL2客户端的问题](api_system/introduction.md)
+- - [MC的各种问题](api_system/questionofmc.md)
   - [小卖铺（请我吃的）](https://afdian.net/@KingOsuperSuper)
