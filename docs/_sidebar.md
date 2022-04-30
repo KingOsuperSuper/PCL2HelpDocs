@@ -1,10 +1,6 @@
 - **快速开始**
 - [简介](README.md)
-- **群内问题**
-- - [引入](api_system/introduction.md)
+- **问题**
+- - [关于PCL2内群以及PCL2客户端](api_system/introduction.md)
 - **PCL2启动器**
-- **站点功能**
-- - 评论系统
-  - [使用 Gitalk 评论](comment.md)
-  - [评论规范](comment_rule.md)
-  - [赞助我们](https://afdian.net/@KingOsuperSuper)
+  - [小卖铺（请我吃的）](https://afdian.net/@KingOsuperSuper)
