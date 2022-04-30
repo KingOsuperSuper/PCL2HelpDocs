@@ -41,7 +41,7 @@
 
 [![BXwa.png](https://cdn-pic.gcxstudio.cn/2022/04/30/BXwa.png)](https://pic.gcxstudio.cn/image/BXwa)
 
-（其实你只要仔细观察你会发现这个方法位于PCL2→更多→帮助，在搜索栏“**输入参与完善PCL2帮助库**”就可以找到该方法，只可惜很多人不看啊）
+（其实你只要仔细观察你会发现这个方法位于`PCL2`→`更多`→`帮助`，在搜索栏“**输入参与完善PCL2帮助库**”就可以找到该方法，只可惜很多人不看啊）
 # Thanks
 [@Gong_cx](new.gcxstudio.cn)：为我提供了Docsify的模板，并且指导我使用Docsify
 
