@@ -4,6 +4,7 @@
 
 > Tips：本文档大部分内容移植于由龙腾猫跃编写的[脑溢血急救中心](https://shimo.im/docs/qKPttVvXKqPD8YDC)
 
+您可以在左侧的菜单栏中的`问题`一栏进行寻找，若出现问题请返回页首，点击右上角的GitHub图标提交issues
 # 如何正确寻求帮助？
 如果您不经常上网与他人交流或您不善于和他人交流，但是您又想询问别人问题，请看以下几张图片。
 ![](https://bakaxl.ml/assets/img/attention-2.05ac75c3.jpg)
